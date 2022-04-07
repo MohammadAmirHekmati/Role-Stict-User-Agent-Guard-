@@ -5,7 +5,9 @@ import { CheckRoles } from "./guards/roles.guard";
 import { NoStrict } from "./decorators/no-strict.decorator";
 import {  NoStrictCheck } from "./guards/no-strict.guard";
 import { CheckUserAgent } from "./guards/user-agent.guard";
+import { ResponseOkSerialize } from "./interceptors/response-ok.interceptor";
 
+@ResponseOkSerialize()
 @Controller("app")
 export class AppController {
   constructor(private readonly appService: AppService) {}
