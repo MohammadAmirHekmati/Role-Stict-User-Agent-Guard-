@@ -13,8 +13,10 @@ export class UserAgentGuard implements CanActivate{
   canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
     const req:Request=context.switchToHttp().getRequest()
       const userAgent:UserAgnetInterface=parser(req.get("user-agent"))
-    console.log(userAgent);
-    return true
+      const userAgentBrowser=userAgent.browser
+      const userAgentName=userAgentBrowser.name.toLowerCase()
+    console.log(userAgentName);
+        return  userAgentName.includes("chrome")
   }
 
 }

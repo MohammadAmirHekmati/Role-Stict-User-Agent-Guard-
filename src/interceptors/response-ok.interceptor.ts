@@ -15,7 +15,9 @@ export function ResponseOkSerialize()
 export class ResponseOkInterceptor implements NestInterceptor{
   intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> | Promise<Observable<any>> {
     return next.handle().pipe(map((data:any)=>{
-        ResponseOk.setData(data)
+
+        const res=ResponseOk.setData(data)
+     return res
     }))
   }
 
